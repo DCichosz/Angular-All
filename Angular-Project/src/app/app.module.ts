@@ -1,3 +1,4 @@
+import { DropdownDirective } from './shared/dropdown.directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -21,7 +22,8 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 		RecipeItemComponent,
 		ShoppingListComponent,
 		ShoppingEditComponent,
-		RecipeDetailComponent
+		RecipeDetailComponent,
+		DropdownDirective
 	],
 	imports: [BrowserModule, FormsModule, HttpModule],
 	providers: [],
