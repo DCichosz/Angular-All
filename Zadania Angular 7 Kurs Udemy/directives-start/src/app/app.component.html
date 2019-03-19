@@ -32,6 +32,7 @@
       <p *ngIf="onlyOdd">
         Only odd numbers
       </p>
+      <!-- do tej postaci niżej kompiluje się *ngIf - * jest po prostu lukrem syntax -->
       <ng-template [ngIf]="onlyOdd">
         <p>Only odd numbers</p>
       </ng-template>
