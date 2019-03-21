@@ -1,6 +1,5 @@
 import { LoggingService } from './shared/logging.service';
-import { Injectable } from '@angular/core';
-
+import { Injectable, EventEmitter } from '@angular/core';
 
 // jeśli wstrzykujemy jakiś serwis do serwisu to do serwisu który będzie używał wstrzykniętego serwisu trzeba dodać Injectable()
 @Injectable()
@@ -19,6 +18,8 @@ export class AccountService {
       status: 'unknown'
     }
   ];
+
+  statusUpdated = new EventEmitter<string>();
 
   constructor(private loggingService: LoggingService) {}
 
