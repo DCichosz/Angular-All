@@ -21,5 +21,19 @@
 	"scssFormatter.useTabs": true,
 	"scssFormatter.tabWidth": 4,
 	"scssFormatter.singleQuote": true,
-	"editor.wordWrapColumn": 120
+	"editor.wordWrapColumn": 120,
+	"auto-close-tag.activationOnLanguage": [
+        "xml",
+        "blade",
+        "ejs",
+        "jinja",
+        "javascriptreact",
+        "markdown",
+        "liquid",
+        "erb",
+        "lang-cfml",
+        "cfml",
+        "HTML (Eex)",
+        "html"
+    ]
 }
