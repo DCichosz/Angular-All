@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css'],
-  providers: [LoggingService]
+//  providers: [LoggingService]
 })
 // jeśli wpiszemy w providers AccountService, to nadpiszemy jego instancje ktora jest juz zainicjowana w AppComponencie, serwisy w Angularze dzialaja na zasadzie
 // app module - dla calej apki ta sama instancja
@@ -27,6 +27,6 @@ export class AccountComponent {
 
   onSetTo(status: string) {
     this.accountService.updateStatus(this.id, status);
-    this.loggingService.logStatusChange(status);
+  //  this.loggingService.logStatusChange(status);
   }
 }
