@@ -2,11 +2,13 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
+        <!-- routerLinkActiveOptions gdy uzywamy exact: true nie uzywa cointains na sciezce tylko jest uzyte gdy sciezka jest idealnie taka jak chcemy -->
         <li
           role="presentation"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
+        <!-- do tego odnosi się powyższy komentarz, będzie dodana klasa 'active' tylko i wylacznie jesli sciezka bedzie np: localhost:4200/ -->
           <a routerLink="/">Home</a>
         </li>
         <li role="presentation" routerLinkActive="active">
