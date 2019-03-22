@@ -61,7 +61,13 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  // hash mode localhost:4200/#/
+  // sposób na ładne linki w starych przegladarkach, ktore nie radza sobie z linkami angulara
+  // deploy na serwerze, gdzie mamy tylko index.html zwroci ci 404, ze nie znalazl pliku np /servers.html
+  imports: [
+    // RouterModule.forRoot(appRoutes, {useHash: true})
+    RouterModule.forRoot(appRoutes)
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
