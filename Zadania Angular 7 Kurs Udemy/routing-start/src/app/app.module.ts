@@ -20,15 +20,27 @@ const appRoutes: Routes = [
   },
   {
     path: 'users',
-    component: UsersComponent
-  },
-  {
-    path: 'users/:id',
-    component: UsersComponent
+    component: UsersComponent,
+    children: [
+      {
+        path: ':id/:name',
+        component: UserComponent
+      }
+    ]
   },
   {
     path: 'servers',
-    component: ServersComponent
+    component: ServersComponent,
+    children: [
+      {
+        path: ':id',
+        component: ServerComponent
+      },
+      {
+        path: ':id/edit',
+        component: EditServerComponent
+      }
+    ]
   },
   {
     path: '*',
@@ -46,7 +58,12 @@ const appRoutes: Routes = [
     EditServerComponent,
     ServerComponent
   ],
-  imports: [BrowserModule, FormsModule, HttpModule, RouterModule.forRoot(appRoutes)],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(appRoutes)
+  ],
   providers: [ServersService],
   bootstrap: [AppComponent]
 })
