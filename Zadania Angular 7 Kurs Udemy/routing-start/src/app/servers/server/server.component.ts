@@ -1,4 +1,4 @@
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ServersService } from '../servers.service';
 
@@ -16,15 +16,19 @@ export class ServerComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit() {
-    // +this.activatedRoute.snapshot.params['id]; --> + przed tym oznacza, że konwertujemy string id ( bo w routingu wszystko jest stringiem) na NUMBER
-    this.server = this.serversService.getServer(
-      +this.acitvatedRoute.snapshot.params['id']
-    );
-
-    // subskrycja wyczekujaca zmian!
-    this.acitvatedRoute.params.subscribe((params: Params) => {
-      this.server = this.serversService.getServer(+params['id']);
+    this.acitvatedRoute.data.subscribe((data: Data) => {
+      this.server = data['server'];
     });
+
+    // // +this.activatedRoute.snapshot.params['id]; --> + przed tym oznacza, że konwertujemy string id ( bo w routingu wszystko jest stringiem) na NUMBER
+    // this.server = this.serversService.getServer(
+    //   +this.acitvatedRoute.snapshot.params['id']
+    // );
+
+    // // subskrycja wyczekujaca zmian!
+    // this.acitvatedRoute.params.subscribe((params: Params) => {
+    //   this.server = this.serversService.getServer(+params['id']);
+    // });
   }
 
   onEdit(): void {
@@ -33,7 +37,7 @@ export class ServerComponent implements OnInit {
     this.router.navigate(['edit'], {
       relativeTo: this.acitvatedRoute,
       queryParamsHandling: 'preserve'
-    // preserveQueryParams: true zadziala tak samo jak to wyzej
+      // preserveQueryParams: true zadziala tak samo jak to wyzej
     });
   }
 }

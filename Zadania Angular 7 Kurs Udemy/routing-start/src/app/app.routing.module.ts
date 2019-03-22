@@ -1,3 +1,4 @@
+import { ServerResolver } from './servers/server.resolver.service';
 import { CanDeactivateGuard } from './servers/edit-server/can-deactivate.guard';
 import { AuthGuard } from './auth-guard.service';
 import { NgModule } from '@angular/core';
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     children: [
       {
         path: ':id',
-        component: ServerComponent
+        component: ServerComponent,
+        resolve: {server: ServerResolver}
       },
       {
         path: ':id/edit',
