@@ -14,7 +14,7 @@ constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
     this.usersService.userActivated.subscribe((id: number) => {
-      if (id === 1){
+      if (id === 1) {
         this.user1Activated = true;
       } else if (id === 2) {
         this.user2Activated = true;
