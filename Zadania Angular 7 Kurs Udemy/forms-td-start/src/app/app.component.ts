@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
 export class AppComponent {
 
   @ViewChild('f') formData: NgForm;
-
+  answer = '';
   suggestedName = '';
   defaultQuestion = 'pet';
   suggestUserName() {
@@ -21,7 +21,7 @@ export class AppComponent {
   // }
 
   onSubmit() {
-    if(this.formData.invalid){
+    if (this.formData.invalid) {
       console.log('nope, do not change html disabled property! ');
       return;
     }

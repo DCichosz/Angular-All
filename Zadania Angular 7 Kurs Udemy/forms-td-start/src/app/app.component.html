@@ -9,7 +9,7 @@
           <div class="form-group">
             <label for="username">Username</label>
             <!-- trzeba dodać name, żeby ngModel mógł zadziałąć -->
-            <!-- ngModel wskazuje, że ten input będzie w obiekcie z formy -->
+            <!-- ngModel wskazuje, że ten input będzie w obiekcie z formy - że jest kontrolką -->
             <input
             type="text"
             id="username"
@@ -42,6 +42,8 @@
           </div>
         </div>
         <div class="form-group">
+          <!-- uzycie one way binding ( property binding ) -->
+          <!-- daje to możliwośc przypisania wartości defaultowej -->
           <label for="secret">Secret Questions</label>
           <select
           id="secret"
@@ -52,6 +54,17 @@
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
+        <div class="form-group">
+          <!-- można używać two way binding  -->
+          <!-- dzieki temu mozna od razu do widoku wypluc co user wpisał -->
+          <textarea
+          name="questionAnswer"
+          rows="3"
+          class="form-control"
+          [(ngModel)]="answer"
+          ></textarea>
+        </div>
+        <p>Your reply: {{ answer }}</p>
         <button
         class="btn btn-primary"
         type="submit"
