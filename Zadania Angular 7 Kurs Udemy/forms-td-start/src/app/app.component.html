@@ -5,7 +5,8 @@
       <!--  przypisanie referencji #f do danych z formularza -->
       <!-- mozemy tez wywolac onSubmit(f) zeby nie uzywac ViewChild ale ViewChild pozwala nam na dostanie sie do danych bez submitowania -->
       <form (ngSubmit)="onSubmit()" #f="ngForm">
-        <div id="user-data">
+        <!-- grupowanie inputów / można walidować całą grupę -->
+        <div id="user-data" ngModelGroup #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
             <!-- trzeba dodać name, żeby ngModel mógł zadziałąć -->
@@ -41,6 +42,7 @@
             <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
           </div>
         </div>
+        <p *ngIf="!userData.valid && userData.touched">User Data is invalid</p>
         <div class="form-group">
           <!-- uzycie one way binding ( property binding ) -->
           <!-- daje to możliwośc przypisania wartości defaultowej -->

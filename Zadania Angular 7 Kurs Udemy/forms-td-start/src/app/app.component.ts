@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,11 @@ import { NgForm } from '@angular/forms';
 export class AppComponent {
 
   @ViewChild('f') formData: NgForm;
+
   answer = '';
   suggestedName = '';
   defaultQuestion = 'pet';
+
   suggestUserName() {
     this.suggestedName = 'Superuser';
   }
