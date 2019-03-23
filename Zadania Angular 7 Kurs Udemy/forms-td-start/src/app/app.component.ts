@@ -20,6 +20,10 @@ export class AppComponent {
   // }
 
   onSubmit() {
+    if(this.formData.invalid){
+      console.log('nope, do not change html disabled property! ');
+      return;
+    }
     console.log(this.formData);
   }
 }

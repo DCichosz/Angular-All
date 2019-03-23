@@ -16,18 +16,24 @@
             class="form-control"
             [value]="suggestedName"
             ngModel
-            name="username">
+            name="username"
+            required
+            >
           </div>
           <button class="btn btn-default" type="button" (click)="suggestUserName()">Suggest an Username</button>
           <div class="form-group">
             <label for="email">Mail</label>
+            <!-- required / email to walidacja wbudowana z automatu -->
             <input
             type="email"
             id="email"
             class="form-control"
             ngModel
-            name="email">
+            name="email"
+            required
+            email>
           </div>
+          <p *ngIf="">Please enter a valid value!</p>
         </div>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
@@ -40,7 +46,12 @@
             <option value="teacher">Your first teacher?</option>
           </select>
         </div>
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!f.valid"
+        >Submit
+      </button>
       </form>
     </div>
   </div>
