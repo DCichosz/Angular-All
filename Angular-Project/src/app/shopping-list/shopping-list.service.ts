@@ -1,5 +1,6 @@
 import { Ingredient } from './../shared/ingredients.model';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ShoppingListService {
@@ -8,7 +9,8 @@ export class ShoppingListService {
 		new Ingredient('Pomidory', 10)
 	];
 
-	ingredientsChanged = new EventEmitter<Ingredient[]>();
+	// zmiana event emitter na Subject
+	ingredientsChanged = new Subject<Ingredient[]>();
 
 	getIngredients(): Ingredient[] {
 		return this.ingredients.slice();
@@ -16,7 +18,7 @@ export class ShoppingListService {
 
 	addIngredient(ingredient: Ingredient): void {
 		this.ingredients.push(ingredient);
-		this.ingredientsChanged.emit(this.ingredients.slice());
+		this.ingredientsChanged.next(this.ingredients.slice());
 	}
 
 	addIngredients(ingredients: Ingredient[]): void {
@@ -26,6 +28,6 @@ export class ShoppingListService {
 
 		// ... pozwalaja na dodanie kazdego elementu w tablicy, tak zwany 'spread operator'
 		this.ingredients.push(...ingredients);
-		this.ingredientsChanged.emit(this.ingredients.slice());
+		this.ingredientsChanged.next(this.ingredients.slice());
 	}
 }

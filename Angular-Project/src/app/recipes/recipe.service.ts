@@ -1,6 +1,6 @@
 import { Ingredient } from './../shared/ingredients.model';
 import { Recipe } from './recipe.model';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
@@ -20,9 +20,7 @@ export class RecipeService {
 		)
 	];
 
-	recipeSelected = new EventEmitter<Recipe>();
-
-	constructor(private shoppingListService: ShoppingListService) {}
+	constructor(private shoppingListService: ShoppingListService) { }
 
 	getRecipes(): Recipe[] {
 		// return this.recipes; -- zwróci referencje do tych wyżej, a z kolei slice zwraca nową kopię bez referencji
