@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  suggestedName = '';
   suggestUserName() {
-    const suggestedName = 'Superuser';
+    this.suggestedName = 'Superuser';
   }
 }
