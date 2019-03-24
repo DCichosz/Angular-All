@@ -1,5 +1,5 @@
-import {Component, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +11,36 @@ export class AppComponent {
   @ViewChild('f') formData: NgForm;
 
   answer = '';
-  suggestedName = '';
   defaultQuestion = 'pet';
+  genders = ['male', 'female'];
+user = {
+  username: '',
+  email: '',
+  secretQuestion: '',
+  secretAnswer: '',
+  gender: ''
+};
+submitted = false;
 
   suggestUserName() {
-    this.suggestedName = 'Superuser';
+    const suggestedName = 'Superuser';
+    // setValue do ustawienia calego formularza
+    // this.formData.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   secret: 'pet',
+    //   questionAnswer: '',
+    //   gender: 'male'
+    // });
+
+    // patch value do ustawienia tylko niektorych prop
+    this.formData.form.patchValue({
+      userData: {
+        username: suggestedName
+      }
+    });
   }
 
   // onSubmit(formData: NgForm) {
@@ -28,5 +53,14 @@ export class AppComponent {
       return;
     }
     console.log(this.formData);
+    this.user.username = this.formData.value.userData.username;
+    this.user.email = this.formData.value.userData.email;
+    this.user.secretQuestion = this.formData.value.secret;
+    this.user.secretAnswer = this.formData.value.questionAnswer;
+    this.user.gender = this.formData.value.gender;
+    this.submitted = true;
+
+    // resetuje formularz
+    this.formData.reset();
   }
 }
