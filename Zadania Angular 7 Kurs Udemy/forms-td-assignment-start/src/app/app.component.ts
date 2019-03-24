@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   subscriptions = ['Basic', 'Advanced', 'Pro'];
-  selectedSubscription = "Advanced";
+  selectedSubscription = 'Advanced';
 
   @ViewChild('form') form: NgForm;
 
