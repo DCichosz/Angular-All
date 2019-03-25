@@ -10,9 +10,9 @@
             class="badge">
             {{ server.status }}
           </span>
-          <strong>{{ server.name }}</strong> |
+          <strong>{{ server.name | shorten }}</strong> |
           {{ server.instanceType | uppercase}} |
-          {{ server.started | date:'fullDate'  }}
+          {{ server.started | date:'fullDate' | uppercase  }}
         </li>
       </ul>
     </div>
