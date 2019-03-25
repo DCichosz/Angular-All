@@ -4,6 +4,11 @@
       <input type="text" [(ngModel)]="filteredStatus">
       <br>
       <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
+      <br><br>
+      <!-- pipe async pozwala poczekac na odpowiedz z promise ( resolve )  -->
+      <!-- nie zwraca [object Promise] tylko czeka na string ktory zwroci -->
+      <h2>App Status: {{ appStatus | async }}</h2>
+      <hr>
       <ul class="list-group">
         <li
           class="list-group-item"
