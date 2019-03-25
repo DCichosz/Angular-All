@@ -13,4 +13,8 @@ export class ServerService {
     // zwróci to tylko observable -> zeby wyslac polecenie musimy zasubskrybować
     return this.httpService.post('https://udemy-ng-http-92fec.firebaseio.com/data.json', servers, {headers: headers});
   }
+
+  getServers() {
+    return this.httpService.get('https://udemy-ng-http-92fec.firebaseio.com/data.json');
+  }
 }
