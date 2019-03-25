@@ -1,39 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-     <!-- bindowanie tej formy z formą z TS -->
+      <!-- bindowanie tej formy z formą z TS -->
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div formGroupName="userData">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <!-- formControlName przypisuje nazwe inputa do tego inputa w formie -->
-                <input
-                  type="text"
-                  id="username"
-                  formControlName="username"
-                  class="form-control">
-                  <span class="help-block"
-                  *ngIf="signupForm.get('userData.username').invalid && signupForm.get('userData.username').touched"
-                  >Please enter a valid username!</span>
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input
-                  type="text"
-                  id="email"
-                  formControlName="email"
-                  class="form-control">
-                  <span class="help-block"
-                  *ngIf="signupForm.get('userData.email').invalid && signupForm.get('userData.email').touched"
-                  >Please enter a valid email!</span>
-              </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <!-- formControlName przypisuje nazwe inputa do tego inputa w formie -->
+            <input type="text" id="username" formControlName="username" class="form-control">
+            <span class="help-block" *ngIf="signupForm.get('userData.username').invalid && signupForm.get('userData.username').touched">
+              <!-- sposób na różne error message -->
+              <span *ngIf="signupForm.get('userData.username').errors['nameIsForbidden']">This name is invalid</span>
+              <span *ngIf="signupForm.get('userData.username').errors['required']">This field is required</span>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" id="email" formControlName="email" class="form-control">
+            <span class="help-block" *ngIf="signupForm.get('userData.email').invalid && signupForm.get('userData.email').touched">Please enter a valid email!</span>
+          </div>
         </div>
         <div class="radio" *ngFor="let gender of genders">
           <label>
-            <input
-              type="radio"
-              formControlName="gender"
-              [value]="gender">{{ gender }}
+            <input type="radio" formControlName="gender" [value]="gender">{{ gender }}
           </label>
         </div>
         <div formArrayName="hobbies">
@@ -43,9 +32,7 @@
             <input type="text" class="form-control" [formControlName]="i">
           </div>
         </div>
-        <span class="help-block"
-        *ngIf="signupForm.invalid && signupForm.touched"
-        >Please enter a valid data!</span>
+        <span class="help-block" *ngIf="signupForm.invalid && signupForm.touched">Please enter a valid data!</span>
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>
