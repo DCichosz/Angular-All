@@ -34,10 +34,31 @@ export class AppComponent implements OnInit {
     // this.signupForm.statusChanges.subscribe((status) => {
     //   console.log(status);
     // });
+
+
+    // setValue ustawia wartości CAŁEGO formularza
+    this.signupForm.setValue({
+      'userData': {
+        'username': 'Damian',
+        'email': 'damian@mail.com'
+      },
+      'gender': 'male',
+      'hobbies': []
+    });
+
+    // patchValue moze nadpisac / ustawic wartosci konkretnych pol w formularzu
+    // nie ma potrzeby ustawiania all pol
+    this.signupForm.patchValue({
+      'userData': {
+        'username': 'AloAlo'
+      }
+    });
   }
 
   onSubmit() {
     console.log(this.signupForm);
+    // resetuje CAŁY formularz
+    this.signupForm.reset();
   }
 
   onAddHobby() {
