@@ -31,6 +31,7 @@ export class AppComponent {
   }
 
   onSave() {
+    // subskrypcja dopiero wysyła polecenie do serwera
     this.serverService.storeServers(this.servers).subscribe(
       (response) =>  console.log(response),
       (error) => console.log(error)
