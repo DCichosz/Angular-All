@@ -10,7 +10,8 @@ import { Response } from '@angular/http';
 export class AppComponent {
 
   constructor(private serverService: ServerService) {}
-
+  // subskrypcja jest załatwiona przez async PIPE w html
+  appName = this.serverService.getAppName();
   servers = [
     {
       name: 'Testserver',

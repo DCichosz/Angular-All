@@ -33,4 +33,11 @@ export class ServerService {
         return throwError('Something went wrong');
     }));
   }
+
+  getAppName(){
+    return this.httpService.get('https://udemy-ng-http-92fec.firebaseio.com/appName.json')
+    .pipe(map((response: Response) => {
+      return response.json();
+    }));
+  }
 }
