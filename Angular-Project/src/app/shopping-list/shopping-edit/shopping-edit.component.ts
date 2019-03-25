@@ -15,6 +15,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 	editedItemIndex: number;
 	editetItem: Ingredient;
 
+	// TEMPLATE FORM APPROACH
 	@ViewChild('f') slForm: NgForm;
 
 	constructor(private shoppingListService: ShoppingListService) { }
