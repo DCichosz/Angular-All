@@ -12,6 +12,12 @@ export class ShoppingListService {
 	// zmiana event emitter na Subject
 	ingredientsChanged = new Subject<Ingredient[]>();
 
+	startedEditing = new Subject<number>();
+
+	getIngredient(index: number): Ingredient {
+		return this.ingredients[index];
+	}
+
 	getIngredients(): Ingredient[] {
 		return this.ingredients.slice();
 	}
@@ -28,6 +34,11 @@ export class ShoppingListService {
 
 		// ... pozwalaja na dodanie kazdego elementu w tablicy, tak zwany 'spread operator'
 		this.ingredients.push(...ingredients);
+		this.ingredientsChanged.next(this.ingredients.slice());
+	}
+
+	updateIngredient(index: number, newIngredient: Ingredient) {
+		this.ingredients[index] = newIngredient;
 		this.ingredientsChanged.next(this.ingredients.slice());
 	}
 }
