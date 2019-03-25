@@ -3,28 +3,30 @@
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
      <!-- bindowanie tej formy z formą z TS -->
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <!-- formControlName przypisuje nazwe inputa do tego inputa w formie -->
-          <input
-            type="text"
-            id="username"
-            formControlName="username"
-            class="form-control">
-            <span class="help-block"
-            *ngIf="signupForm.get('username').invalid && signupForm.get('username').touched"
-            >Please enter a valid username!</span>
-        </div>
-        <div class="form-group">
-          <label for="email">email</label>
-          <input
-            type="text"
-            id="email"
-            formControlName="email"
-            class="form-control">
-            <span class="help-block"
-            *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched"
-            >Please enter a valid email!</span>
+        <div formGroupName="userData">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <!-- formControlName przypisuje nazwe inputa do tego inputa w formie -->
+                <input
+                  type="text"
+                  id="username"
+                  formControlName="username"
+                  class="form-control">
+                  <span class="help-block"
+                  *ngIf="signupForm.get('userData.username').invalid && signupForm.get('userData.username').touched"
+                  >Please enter a valid username!</span>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="text"
+                  id="email"
+                  formControlName="email"
+                  class="form-control">
+                  <span class="help-block"
+                  *ngIf="signupForm.get('userData.email').invalid && signupForm.get('userData.email').touched"
+                  >Please enter a valid email!</span>
+              </div>
         </div>
         <div class="radio" *ngFor="let gender of genders">
           <label>
