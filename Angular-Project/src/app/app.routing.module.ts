@@ -7,6 +7,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
+import { AuthGuard } from './auth/auth-guard.service';
 
 const appRoutes: Routes = [
 	{
@@ -24,15 +25,17 @@ const appRoutes: Routes = [
 			},
 			{
 				path: 'new',
-				component: RecipeEditComponent
+				component: RecipeEditComponent,
+				canActivate: [AuthGuard]
 			},
 			{
 				path: ':id',
-				component: RecipeDetailComponent
+				component: RecipeDetailComponent,
 			},
 			{
 				path: ':id/edit',
-				component: RecipeEditComponent
+				component: RecipeEditComponent,
+				canActivate: [AuthGuard]
 			}
 		]
 	},
@@ -54,4 +57,4 @@ const appRoutes: Routes = [
 	imports: [RouterModule.forRoot(appRoutes)],
 	exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
