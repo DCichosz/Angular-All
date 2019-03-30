@@ -13,7 +13,7 @@ const recipesRoutes: Routes = [
 		children: [
 			{
 				path: '',
-				component: RecipeStartComponent
+				component: RecipeStartComponent,
 			},
 			{
 				path: 'new',

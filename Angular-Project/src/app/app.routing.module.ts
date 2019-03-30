@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './auth/auth-guard.service';
 
 const appRoutes: Routes = [
 	{
@@ -14,7 +15,10 @@ const appRoutes: Routes = [
 	},
 	{
 		path: 'shopping-list',
-		loadChildren: './shopping-list/shopping-list.module#ShoppingListModule'
+		loadChildren: './shopping-list/shopping-list.module#ShoppingListModule',
+		// canLoad sprawdza PRZED pobraniem / wejsciem czy w ogole mozesz
+		// co pozwala zachowac lazyloading
+		//canLoad: [AuthGuard]
 	},
 	{
 		path: '**',
