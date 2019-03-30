@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./signin.component.css']
 })
 export class SigninComponent implements OnInit {
-	constructor(private authService: AuthService) {}
+	constructor(private authService: AuthService) { }
 
-	ngOnInit() {}
+	ngOnInit() { }
 
 	onSignIn(form: NgForm) {
 		const email = form.value.email;
