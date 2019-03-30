@@ -23,11 +23,12 @@ import { RecipesModule } from './recipes/recipes.module';
 		SigninComponent,
 		SignupComponent
 	],
+	// routing musi byc na samym dole
 	imports: [BrowserModule,
 		FormsModule,
 		HttpModule,
+		RecipesModule,
 		AppRoutingModule,
-		RecipesModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
