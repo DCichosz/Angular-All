@@ -16,9 +16,9 @@ const appRoutes: Routes = [
 	{
 		path: 'shopping-list',
 		loadChildren: './shopping-list/shopping-list.module#ShoppingListModule',
+		canLoad: [AuthGuard],
 		// canLoad sprawdza PRZED pobraniem / wejsciem czy w ogole mozesz
 		// co pozwala zachowac lazyloading
-		//canLoad: [AuthGuard]
 	},
 	{
 		path: '**',
