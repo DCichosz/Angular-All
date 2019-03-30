@@ -13,6 +13,10 @@ const appRoutes: Routes = [
 		loadChildren: './recipes/recipes.module#RecipesModule'
 	},
 	{
+		path: 'shopping-list',
+		loadChildren: './shopping-list/shopping-list.module#ShoppingListModule'
+	},
+	{
 		path: '**',
 		component: HomeComponent
 	}

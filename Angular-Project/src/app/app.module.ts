@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
-import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { HomeComponent } from './home/home.component';
 import { HttpModule } from '@angular/http';
 
@@ -22,7 +21,6 @@ import { HttpModule } from '@angular/http';
 		HttpModule,
 		AuthModule,
 		SharedModule,
-		ShoppingListModule,
 		AppRoutingModule,
 	],
 	providers: [],
