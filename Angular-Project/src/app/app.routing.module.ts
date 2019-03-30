@@ -10,35 +10,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { AuthGuard } from './auth/auth-guard.service';
 
 const appRoutes: Routes = [
-	{
-		path: '',
-		redirectTo: '/recipes',
-		pathMatch: 'full'
-	},
-	{
-		path: 'recipes',
-		component: RecipesComponent,
-		children: [
-			{
-				path: '',
-				component: RecipeStartComponent
-			},
-			{
-				path: 'new',
-				component: RecipeEditComponent,
-				canActivate: [AuthGuard]
-			},
-			{
-				path: ':id',
-				component: RecipeDetailComponent,
-			},
-			{
-				path: ':id/edit',
-				component: RecipeEditComponent,
-				canActivate: [AuthGuard]
-			}
-		]
-	},
+
 	{
 		path: 'shopping-list',
 		component: ShoppingListComponent
@@ -52,7 +24,7 @@ const appRoutes: Routes = [
 		component: SigninComponent
 	}
 ];
-
+// dla routingu ogolnego uzywamy forRoot
 @NgModule({
 	imports: [RouterModule.forRoot(appRoutes)],
 	exports: [RouterModule]
