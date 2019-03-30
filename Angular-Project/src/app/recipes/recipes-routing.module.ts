@@ -9,11 +9,6 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 const recipesRoutes: Routes = [
 	{
 		path: '',
-		redirectTo: '/recipes',
-		pathMatch: 'full'
-	},
-	{
-		path: 'recipes',
 		component: RecipesComponent,
 		children: [
 			{

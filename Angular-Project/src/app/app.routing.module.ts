@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
 	{
+		path: '',
+		component: HomeComponent
+	},
+	// Lazy Loading na Recipes !!
+	{
+		path: 'recipes',
+		loadChildren: './recipes/recipes.module#RecipesModule'
+	},
+	{
 		path: '**',
-		redirectTo: '/recipes'
+		component: HomeComponent
 	}
 ];
 // dla routingu ogolnego uzywamy forRoot
