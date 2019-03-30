@@ -13,7 +13,7 @@ export class HeaderComponent {
 		private dataStorageService: DataStorageService,
 		private recipeService: RecipeService,
 		private authService: AuthService
-	) {}
+	) { }
 
 	onSave() {
 		this.dataStorageService
@@ -23,5 +23,9 @@ export class HeaderComponent {
 
 	onFetch() {
 		this.dataStorageService.fetchRecipes();
+	}
+
+	onLogout() {
+		this.authService.signOutUser();
 	}
 }
