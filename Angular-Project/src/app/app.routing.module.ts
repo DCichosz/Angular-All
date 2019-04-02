@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AuthGuard } from './auth/auth-guard.service';
 import { HomeComponent } from './core/home/home.component';
 
@@ -27,7 +27,12 @@ const appRoutes: Routes = [
 ];
 // dla routingu ogolnego uzywamy forRoot
 @NgModule({
-	imports: [RouterModule.forRoot(appRoutes)],
+	// preloading lazy loaded routes
+	imports: [
+		RouterModule.forRoot(appRoutes, {
+			preloadingStrategy: PreloadAllModules
+		})
+	],
 	exports: [RouterModule]
 })
 export class AppRoutingModule {}
