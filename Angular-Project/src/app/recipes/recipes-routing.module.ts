@@ -13,7 +13,7 @@ const recipesRoutes: Routes = [
 		children: [
 			{
 				path: '',
-				component: RecipeStartComponent,
+				component: RecipeStartComponent
 			},
 			{
 				path: 'new',
@@ -22,7 +22,7 @@ const recipesRoutes: Routes = [
 			},
 			{
 				path: ':id',
-				component: RecipeDetailComponent,
+				component: RecipeDetailComponent
 			},
 			{
 				path: ':id/edit',
@@ -30,13 +30,11 @@ const recipesRoutes: Routes = [
 				canActivate: [AuthGuard]
 			}
 		]
-	},
+	}
 ];
 // uzywamy forChild, ponieważ jest to moduł z featurem a nie appmodule!!
 @NgModule({
-	imports: [
-		RouterModule.forChild(recipesRoutes)
-	],
+	imports: [RouterModule.forChild(recipesRoutes)],
 	exports: [RouterModule]
 })
-export class RecipesRoutingModule { }
+export class RecipesRoutingModule {}

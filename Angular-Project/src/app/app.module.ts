@@ -9,7 +9,7 @@ import { HttpModule } from '@angular/http';
 
 @NgModule({
 	declarations: [AppComponent],
-	imports: [BrowserModule, HttpModule, CoreModule, AuthModule, SharedModule],
+	imports: [BrowserModule, HttpModule, AuthModule, SharedModule, CoreModule],
 	providers: [],
 	bootstrap: [AppComponent]
 })
