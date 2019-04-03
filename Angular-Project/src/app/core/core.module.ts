@@ -1,3 +1,4 @@
+import { LoggingInterceptor } from './../shared/logging.interceptor';
 import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -13,7 +14,12 @@ import { HomeComponent } from './home/home.component';
 	exports: [AppRoutingModule, HeaderComponent, HomeComponent],
 	// dodanie interceptora
 	providers: [
-		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: LoggingInterceptor,
+			multi: true
+		}
 	]
 })
 export class CoreModule {}
