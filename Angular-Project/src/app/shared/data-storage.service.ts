@@ -1,4 +1,9 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import {
+	HttpClient,
+	HttpHeaders,
+	HttpParams,
+	HttpRequest
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
@@ -17,22 +22,38 @@ export class DataStorageService {
 	storeRecipes() {
 		const recipes = this.recipeService.getRecipes();
 		const token = this.authService.getToken();
-		return this.httpClient.put(
+		// return this.httpClient.put(
+		// 	'https://ng-recipe-book-50c70.firebaseio.com/recipes.json',
+		// 	recipes,
+		// 	{
+		// 		observe: 'body',
+		// 		// ustawianie parametrów dynamicznie
+		// 		params: new HttpParams().set('auth', token)
+
+		// 		// observe: 'response'
+		// 		//  można do zapytania dodać headery własne
+		// 		// headers: new HttpHeaders().set(
+		// 		// 	'Authorization',
+		// 		// 	'Bearer tokenchybatumabyc'
+		// 		// )
+		// 	}
+		// );
+
+		// kreowanie requestu od podszewki
+		// działa to tak samo jak wyżej
+		// jeśli coś pobieramy, uploadujemy, reportProgress się przydaje
+		// type: 1 przy zwrotce obrazuje nam upload
+		// type: 3 przy zwrotce obrazuje nam download
+		const req = new HttpRequest(
+			'PUT',
 			'https://ng-recipe-book-50c70.firebaseio.com/recipes.json',
 			recipes,
 			{
-				observe: 'body',
-				// ustawianie parametrów dynamicznie
+				reportProgress: true,
 				params: new HttpParams().set('auth', token)
-
-				// observe: 'response'
-				//  można do zapytania dodać headery własne
-				// headers: new HttpHeaders().set(
-				// 	'Authorization',
-				// 	'Bearer tokenchybatumabyc'
-				// )
 			}
 		);
+		return this.httpClient.request(req);
 	}
 
 	fetchRecipes() {
