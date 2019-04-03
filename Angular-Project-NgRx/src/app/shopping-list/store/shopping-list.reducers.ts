@@ -12,7 +12,7 @@ export function shoppingListReducer(state = initialState, action: Action) {
 		case ADD_INGREDIENT:
 			return {
 				...state,
-				ingredients: [...state.ingredients]
+				ingredients: [...state.ingredients, action]
 			};
 	}
 	return state;
