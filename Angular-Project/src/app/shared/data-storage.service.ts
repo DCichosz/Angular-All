@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
@@ -18,11 +18,13 @@ export class DataStorageService {
 		const recipes = this.recipeService.getRecipes();
 		const token = this.authService.getToken();
 		return this.httpClient.put(
-			'https://ng-recipe-book-50c70.firebaseio.com/recipes.json?auth=' +
-				token,
+			'https://ng-recipe-book-50c70.firebaseio.com/recipes.json',
 			recipes,
 			{
-				observe: 'body'
+				observe: 'body',
+				// ustawianie parametrów dynamicznie
+				params: new HttpParams().set('auth', token)
+
 				// observe: 'response'
 				//  można do zapytania dodać headery własne
 				// headers: new HttpHeaders().set(
