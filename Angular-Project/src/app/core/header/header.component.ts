@@ -1,7 +1,7 @@
-import { Response } from '@angular/http';
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 @Component({
 	selector: 'app-header',
