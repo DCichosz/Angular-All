@@ -18,16 +18,6 @@ export class ShoppingListService {
 		return this.ingredients[index];
 	}
 
-	addIngredients(ingredients: Ingredient[]): void {
-		// ingredients.forEach(ingredient => {
-		// 	this.ingredients.push(ingredient);
-		// });
-
-		// ... pozwalaja na dodanie kazdego elementu w tablicy, tak zwany 'spread operator'
-		this.ingredients.push(...ingredients);
-		this.ingredientsChanged.next(this.ingredients.slice());
-	}
-
 	updateIngredient(index: number, newIngredient: Ingredient) {
 		this.ingredients[index] = newIngredient;
 		this.ingredientsChanged.next(this.ingredients.slice());
