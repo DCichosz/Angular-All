@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {Component, ViewChild} from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +13,14 @@ export class AppComponent {
   answer = '';
   defaultQuestion = 'pet';
   genders = ['male', 'female'];
-user = {
-  username: '',
-  email: '',
-  secretQuestion: '',
-  secretAnswer: '',
-  gender: ''
-};
-submitted = false;
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    secretAnswer: '',
+    gender: ''
+  };
+  submitted = false;
 
   suggestUserName() {
     const suggestedName = 'Superuser';
