@@ -18,15 +18,6 @@ export class ShoppingListService {
 		return this.ingredients[index];
 	}
 
-	getIngredients(): Ingredient[] {
-		return this.ingredients.slice();
-	}
-
-	addIngredient(ingredient: Ingredient): void {
-		this.ingredients.push(ingredient);
-		this.ingredientsChanged.next(this.ingredients.slice());
-	}
-
 	addIngredients(ingredients: Ingredient[]): void {
 		// ingredients.forEach(ingredient => {
 		// 	this.ingredients.push(ingredient);
