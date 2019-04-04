@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Actions, Effect} from '@ngrx/effects';
+import {Actions, Effect, ofType} from '@ngrx/effects';
 import {switchMap, withLatestFrom, map} from 'rxjs/operators';
 import {HttpClient, HttpRequest} from '@angular/common/http';
 import {Store} from '@ngrx/store';
@@ -7,6 +7,7 @@ import {Store} from '@ngrx/store';
 import * as RecipeActions from '../store/recipe.actions';
 import {Recipe} from '../recipe.model';
 import * as fromRecipe from '../store/recipe.reducers';
+import {state} from '@angular/animations';
 
 @Injectable()
 export class RecipeEffects {
@@ -35,8 +36,9 @@ export class RecipeEffects {
 
   @Effect({dispatch: false})
   recipeStore = this.actions$
-    .ofType(RecipeActions.STORE_RECIPES)
-    .pipe(withLatestFrom(this.store.select('recipes')),
+    .pipe(
+    ofType(RecipeActions.STORE_RECIPES),
+      withLatestFrom(this.store.select('recipes')),
       switchMap(([action, state]) => {
         const req = new HttpRequest('PUT', 'https://ng-recipe-book-3adbb.firebaseio.com/recipes.json', state.recipes, {reportProgress: true});
         return this.httpClient.request(req);
