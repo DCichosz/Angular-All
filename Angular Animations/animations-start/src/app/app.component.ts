@@ -33,7 +33,15 @@ import {trigger, state, style, transition, animate} from '@angular/animations';
       })),
       transition('normal => highLighted', animate(300)),
       transition('highLighted => normal', animate(800)),
-      transition('shrunken <=> *', animate(500))
+      transition('shrunken <=> *', [
+        style({
+          'background-color': 'orange'
+        }),
+        animate(1000, style({
+          borderRadius: '50px'
+        })),
+        animate(500)
+      ])
     ])
   ]
 })
