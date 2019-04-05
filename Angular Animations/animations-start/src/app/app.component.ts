@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
-import { trigger, state, style, transition, animate } from "@angular/animations";
+import {Component} from '@angular/core';
+import {trigger, state, style, transition, animate} from '@angular/animations';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
+  selector: 'app-root',
+  templateUrl: './app.component.html',
   animations: [trigger('divState', [
     state('normal', style({
       'background-color': 'red',
@@ -13,19 +13,45 @@ import { trigger, state, style, transition, animate } from "@angular/animations"
       'background-color': 'blue',
       transform: 'translateX(100px)'
     })),
-    transition('normal => highLighted', animate(300)),
-    transition('highLighted => normal', animate(800))
-  ])]
+    // nie trzeba kopiować, jesli chcemy zrobic animacje w 2 strony
+    // wystarczy zamiast => dać <=>
+    transition('normal <=> highLighted', animate(300)),
+    // transition('highLighted => normal', animate(800))
+    ]),
+    trigger('wildState', [
+      state('normal', style({
+        'background-color': 'red',
+        transform: 'translateX(0) scale(1)'
+      })),
+      state('highLighted', style({
+        'background-color': 'blue',
+        transform: 'translateX(100px) scale(1)'
+      })),
+      state('shrunken', style({
+        'background-color': 'green',
+        transform: 'translateX(0px) scale(0.5)'
+      })),
+      transition('normal => highLighted', animate(300)),
+      transition('highLighted => normal', animate(800)),
+      transition('shrunken <=> *', animate(500))
+    ])
+  ]
 })
 export class AppComponent {
 
   state = 'normal';
+  wildState = 'normal';
 
-  list = ["Milk", "Sugar", "Bread"];
+  list = ['Milk', 'Sugar', 'Bread'];
 
 
   onAnimate() {
     this.state === 'normal' ? this.state = 'highLighted' : this.state = 'normal';
+    this.wildState = 'normal' ? this.wildState = 'highLighted' : this.wildState = 'normal';
+  }
+
+  onShrink() {
+    this.wildState = 'shrunken';
   }
 
 
