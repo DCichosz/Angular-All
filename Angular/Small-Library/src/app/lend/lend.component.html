@@ -8,12 +8,12 @@
         <th>Opcje</th>
       </tr>
     </thead>
-    <tbody *ngFor="let lender of lenders">
-      <td>{{ lender.title }}</td>
-      <td>{{ lender.lender.fullname }}</td>
-      <td>{{ lender.date | date}}</td>
+    <tbody *ngFor="let lend of lended; let i = index">
+      <td>{{ lend.title }}</td>
+      <td>{{ lend.lender.fullname }}</td>
+      <td>{{ lend.date | date: 'short' }}</td>
       <td>
-          <button class="btn btn-primary btn-sm mr-1">
+          <button class="btn btn-primary btn-sm mr-1" (click)="onReturn(i)">
             <i class="fa fa-check mr-2"></i>Oddaj
           </button>
     </tbody>

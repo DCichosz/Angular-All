@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { LendService } from './lend.service';
 import { Lend } from './lend.model';
@@ -9,11 +10,20 @@ import { Lend } from './lend.model';
   styleUrls: ['./lend.component.css']
 })
 export class LendComponent implements OnInit {
-  lenders: Lend[];
+  lended: Lend[];
+
+  subscription: Subscription;
 
   constructor(private lenderService: LendService) {}
 
   ngOnInit() {
-    this.lenders = this.lenderService.getLenders();
+    this.lended = this.lenderService.getLenders();
+    this.subscription = this.lenderService.lendersChanged.subscribe((lended: Lend[]) => {
+      this.lended = lended;
+    });
+  }
+
+  onReturn(index: number) {
+    this.lenderService.returnBook(index);
   }
 }
