@@ -1,0 +1,37 @@
+<h1>Książki</h1>
+<div class="button-group"></div>
+<form>
+  <div class="form-group">
+    <label>Tytuł</label>
+    <input class="form-control" type="text" />
+  </div>
+  <div class="form-group">
+    <label for="">Autor</label>
+    <input class="form-control" type="text" />
+  </div>
+  <button class="btn btn-success btn-sm">
+    <i class="fa fa-plus mr-2"></i>Dodaj
+  </button>
+</form>
+<br>
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th>Tytuł</th>
+      <th>Autor</th>
+      <th>Opcje</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let book of books; let i = index">
+    <td>{{ book.title }}</td>
+    <td>{{ book.author }}</td>
+    <td>
+      <button class="btn btn-warning btn-sm mr-1">
+        <i class="fa fa-edit mr-2"></i>Edytuj
+      </button>
+      <button class="btn btn-danger btn-sm" (click)="onDelete(i)">
+        <i class="fa fa-trash mr-2"></i>Usuń
+      </button>
+    </td>
+  </tbody>
+</table>

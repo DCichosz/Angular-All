@@ -1,0 +1,20 @@
+  <h1>Wypożyczone</h1>
+  <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th>Tytuł</th>
+        <th>Wypożyczający</th>
+        <th>Data Wypożyczenia</th>
+        <th>Opcje</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let lender of lenders">
+      <td>{{ lender.title }}</td>
+      <td>{{ lender.lender.fullname }}</td>
+      <td>{{ lender.date | date}}</td>
+      <td>
+          <button class="btn btn-primary btn-sm mr-1">
+            <i class="fa fa-check mr-2"></i>Oddaj
+          </button>
+    </tbody>
+  </table>
