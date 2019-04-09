@@ -1,16 +1,17 @@
 <h1>Książki</h1>
 <div class="button-group"></div>
-<form>
-  <div class="form-group">
-    <label>Tytuł</label>
-    <input class="form-control" type="text" />
-  </div>
-  <div class="form-group">
-    <label for="">Autor</label>
-    <input class="form-control" type="text" />
-  </div>
-  <button class="btn btn-success btn-sm">
-    <i class="fa fa-plus mr-2"></i>Dodaj
+<form (ngSubmit)="onSubmit()" [formGroup]="booksForm" >
+      <div class="form-group" formGroupName="book">
+          <label>Tytuł</label>
+          <input class="form-control" type="text" formControlName="title"/>
+          <p class="text-muted" *ngIf="booksForm.get('book.title').invalid && booksForm.get('book.title').touched">Tytuł nie może być pusty!</p>
+          <label class="pt-1">Autor</label>
+          <input class="form-control" type="text" formControlName="author"/>
+          <p class="text-muted" *ngIf="booksForm.get('book.author').invalid && booksForm.get('book.author').touched">Autor nie może być pusty!</p>
+        </div>
+  <button class="btn btn-success btn-sm" type="submit" [disabled]="booksForm.invalid">
+    <i class="fa fa-plus mr-2"></i>
+    {{ editedBook ? 'Edytuj' : 'Dodaj'}}
   </button>
 </form>
 <br>
@@ -26,7 +27,7 @@
     <td>{{ book.title }}</td>
     <td>{{ book.author }}</td>
     <td>
-      <button class="btn btn-warning btn-sm mr-1">
+      <button class="btn btn-warning btn-sm mr-1" (click)="onStartEdit(book.title,book.author, i)">
         <i class="fa fa-edit mr-2"></i>Edytuj
       </button>
       <button class="btn btn-danger btn-sm" (click)="onDelete(i)">

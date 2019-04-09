@@ -7,14 +7,14 @@ export class BooksService {
   booksChanged = new Subject<Book[]>();
 
   private books: Book[] = [
-    new Book('Cos', 'Hejka'),
-    new Book('Cos', 'Hejka'),
-    new Book('Cos', 'Hejka'),
-    new Book('Cos', 'Hejka'),
-    new Book('Cos', 'Hejka')
+    new Book('Cos1', 'Hejka'),
+    new Book('Cos2', 'Hejka'),
+    new Book('Cos3', 'Hejka'),
+    new Book('Cos4', 'Hejka'),
+    new Book('Cos5', 'Hejka')
   ];
 
-  emitBooks() {
+  emitBooksChange() {
     this.booksChanged.next(this.books.slice());
   }
 
@@ -24,11 +24,16 @@ export class BooksService {
 
   editBook(index: number, newBook: Book) {
     this.books[index] = newBook;
-    this.emitBooks();
+    this.emitBooksChange();
+  }
+
+  addBook(newBook: Book) {
+    this.books.push(newBook);
+    this.emitBooksChange();
   }
 
   deleteBook(index: number) {
     this.books.splice(index, 1);
-    this.emitBooks();
+    this.emitBooksChange();
   }
 }
