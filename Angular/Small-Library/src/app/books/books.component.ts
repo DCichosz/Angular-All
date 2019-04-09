@@ -14,8 +14,8 @@ export class BooksComponent implements OnInit, OnDestroy {
   books: Book[];
   subscription: Subscription;
   editedBook: {
-    'index': number,
-    'book': Book
+    index: number;
+    book: Book;
   };
 
   booksForm: FormGroup;
@@ -40,10 +40,9 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   onStartEdit(editedTitle: string, editedAuthor: string, index: number) {
     this.editedBook = {
-      index: index,
-      book: new Book(editedTitle, editedAuthor)
+      index,
+      book: null
     };
-
 
     this.booksForm.setValue({
       book: {
@@ -58,18 +57,21 @@ export class BooksComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    if (this.booksForm.invalid) {
-
+    if (this.editedBook) {
+      this.editedBook.book = new Book(
+        this.booksForm.get('book.title').value,
+        this.booksForm.get('book.author').value
+      );
+      this.booksService.editBook(this.editedBook.index, this.editedBook.book);
     } else {
-      if(this.editedBook) {
-        // this.booksService.editBook()
-      } else {
-        console.log(this.booksForm);
-        this.booksService.addBook(
-          new Book(this.booksForm.get('book.title').value, this.booksForm.get('book.author').value)
-        );
-      }
+      this.booksService.addBook(
+        new Book(
+          this.booksForm.get('book.title').value,
+          this.booksForm.get('book.author').value
+        )
+      );
     }
+    this.editedBook = null;
     this.booksForm.reset();
   }
 

@@ -1,20 +1,40 @@
 <h1>Książki</h1>
 <div class="button-group"></div>
-<form (ngSubmit)="onSubmit()" [formGroup]="booksForm" >
-      <div class="form-group" formGroupName="book">
-          <label>Tytuł</label>
-          <input class="form-control" type="text" formControlName="title"/>
-          <p class="text-muted" *ngIf="booksForm.get('book.title').invalid && booksForm.get('book.title').touched">Tytuł nie może być pusty!</p>
-          <label class="pt-1">Autor</label>
-          <input class="form-control" type="text" formControlName="author"/>
-          <p class="text-muted" *ngIf="booksForm.get('book.author').invalid && booksForm.get('book.author').touched">Autor nie może być pusty!</p>
-        </div>
-  <button class="btn btn-success btn-sm" type="submit" [disabled]="booksForm.invalid">
+<form (ngSubmit)="onSubmit()" [formGroup]="booksForm">
+  <div class="form-group" formGroupName="book">
+    <label>Tytuł</label>
+    <input class="form-control" type="text" formControlName="title" />
+    <p
+      class="text-muted"
+      *ngIf="
+        booksForm.get('book.title').invalid &&
+        booksForm.get('book.title').touched
+      "
+    >
+      Tytuł nie może być pusty!
+    </p>
+    <label class="pt-1">Autor</label>
+    <input class="form-control" type="text" formControlName="author" />
+    <p
+      class="text-muted"
+      *ngIf="
+        booksForm.get('book.author').invalid &&
+        booksForm.get('book.author').touched
+      "
+    >
+      Autor nie może być pusty!
+    </p>
+  </div>
+  <button
+    class="btn btn-success btn-sm"
+    type="submit"
+    [disabled]="booksForm.invalid"
+  >
     <i class="fa fa-plus mr-2"></i>
-    {{ editedBook ? 'Edytuj' : 'Dodaj'}}
+    {{ editedBook ? 'Edytuj' : 'Dodaj' }}
   </button>
 </form>
-<br>
+<br />
 <table class="table table-hover table-sm">
   <thead>
     <tr>
@@ -27,11 +47,17 @@
     <td>{{ book.title }}</td>
     <td>{{ book.author }}</td>
     <td>
-      <button class="btn btn-warning btn-sm mr-1" (click)="onStartEdit(book.title,book.author, i)">
+      <button
+        class="btn btn-warning btn-sm mr-1"
+        (click)="onStartEdit(book.title, book.author, i)"
+      >
         <i class="fa fa-edit mr-2"></i>Edytuj
       </button>
       <button class="btn btn-danger btn-sm" (click)="onDelete(i)">
         <i class="fa fa-trash mr-2"></i>Usuń
+      </button>
+      <button class="btn btn-info btn-sm">
+        <i class="fa fa-check-circle mr-2"></i>Wypożycz
       </button>
     </td>
   </tbody>

@@ -1,6 +1,6 @@
   <h1>Czytelnicy</h1>
   <div class="button-group"></div>
-  <form action="/">
+  <form>
     <div class="form-group">
       <label for="">Imię i Nazwisko</label>
       <input class="form-control" id="fullname" type="text" />
@@ -22,14 +22,14 @@
         <th>Opcje</th>
       </tr>
     </thead>
-    <tbody *ngFor="let user of users">
+    <tbody *ngFor="let user of users; let i = index">
       <td>{{ user.fullname }}</td>
       <td>{{ user.age }}</td>
       <td>
           <button class="btn btn-warning btn-sm mr-1">
             <i class="fa fa-edit mr-2"></i>Edytuj
           </button>
-          <button class="btn btn-danger btn-sm">
+          <button class="btn btn-danger btn-sm" (click)="onDelete(i)">
             <i class="fa fa-trash mr-2"></i>Usuń
           </button>
         </td>
