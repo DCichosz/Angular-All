@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import * as _ from 'lodash';
 
 import { Lend } from './lend.model';
 import { User } from '..//users/user.model';
@@ -23,6 +24,15 @@ export class LendService {
 
   emitLendersChange() {
     this.lendersChanged.next(this.lenders.slice());
+  }
+
+  checkTitle(title: string) {
+    return this.lenders.find(lender =>  lender.title === title) ? true : false;
+  }
+
+  checkUser(user: User) {
+    console.log(user);
+    return this.lenders.find(lender => _.isEqual(lender.lender, user)) ? true : false;
   }
 
   getLenders(): Lend[] {

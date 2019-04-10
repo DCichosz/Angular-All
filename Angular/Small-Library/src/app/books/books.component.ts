@@ -71,6 +71,7 @@ export class BooksComponent implements OnInit, OnDestroy {
           this.booksForm.get('book.author').value
         )
       );
+
     }
     this.editedBook = null;
     this.booksForm.reset();
@@ -78,7 +79,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   onPick(pickedBook: Book) {
     console.log(pickedBook);
-    this.lendService.pickBook(pickedBook);
+    this.lendService.checkTitle(pickedBook.title) ? alert('Książka została już wypożyczona') : this.lendService.pickBook(pickedBook);
   }
 
   ngOnDestroy() {

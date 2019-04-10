@@ -44,7 +44,11 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   onLend(pickedUser: User) {
-    this.lendService.lendBook(pickedUser, this.pickedBook.title);
+    this.lendService.checkUser(pickedUser)
+      ?  alert(
+          'Użytkownik nie oddał wypożyczonej książki, nie można wypożyczyć następnej'
+        )
+      : this.lendService.lendBook(pickedUser, this.pickedBook.title);
     this.pickedBook = null;
   }
 }
