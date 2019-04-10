@@ -32,6 +32,9 @@
           <button class="btn btn-danger btn-sm" (click)="onDelete(i)">
             <i class="fa fa-trash mr-2"></i>Usuń
           </button>
+          <button class="btn btn-info btn-sm" *ngIf="pickedBook" (click)="onLend({fullname: user.fullname, age: user.age})">
+            <i class="fa fa-check-circle mr-2"></i>Wypożycz
+          </button>
         </td>
     </tbody>
   </table>

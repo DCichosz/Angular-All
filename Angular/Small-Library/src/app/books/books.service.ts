@@ -6,6 +6,8 @@ import { Subject } from 'rxjs';
 export class BooksService {
   booksChanged = new Subject<Book[]>();
 
+  pickedBook = new Subject<Book>();
+
   private books: Book[] = [
     new Book('Cos1', 'Hejka'),
     new Book('Cos2', 'Hejka'),

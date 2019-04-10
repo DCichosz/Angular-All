@@ -1,3 +1,4 @@
+import { LendService } from './../lend/lend.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -20,7 +21,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   booksForm: FormGroup;
 
-  constructor(private booksService: BooksService) {}
+  constructor(private booksService: BooksService, private lendService: LendService) {}
 
   ngOnInit() {
     this.books = this.booksService.getBooks();
@@ -73,6 +74,11 @@ export class BooksComponent implements OnInit, OnDestroy {
     }
     this.editedBook = null;
     this.booksForm.reset();
+  }
+
+  onPick(pickedBook: Book) {
+    console.log(pickedBook);
+    this.lendService.pickBook(pickedBook);
   }
 
   ngOnDestroy() {

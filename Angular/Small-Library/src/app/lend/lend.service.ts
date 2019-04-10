@@ -3,10 +3,16 @@ import { Subject } from 'rxjs';
 
 import { Lend } from './lend.model';
 import { User } from '..//users/user.model';
+import { Book } from '../books/book.model';
 
 @Injectable({ providedIn: 'root' })
 export class LendService {
   lendersChanged = new Subject<Lend[]>();
+
+  public LenderUser: User;
+  public title: string;
+
+  pickedBook = new Subject<Book>();
 
   lenders: Lend[] = [
     new Lend('Cos', new User('Andre', 10), new Date()),
@@ -31,5 +37,9 @@ export class LendService {
   returnBook(index: number) {
     this.lenders.splice(index, 1);
     this.emitLendersChange();
+  }
+
+  pickBook(pickedBook: Book) {
+    this.pickedBook.next(pickedBook);
   }
 }

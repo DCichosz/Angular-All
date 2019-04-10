@@ -1,6 +1,8 @@
-import { Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
+import { LendService } from './../lend/lend.service';
+import { Book } from './../books/book.model';
 import { UsersService } from './users.service';
 import { User } from './user.model';
 
@@ -12,16 +14,25 @@ import { User } from './user.model';
 export class UsersComponent implements OnInit, OnDestroy {
   users: User[];
   subscription: Subscription;
-
-  constructor(private usersService: UsersService) {}
+  bookSub: Subscription;
+  pickedBook: Book;
+  constructor(
+    private usersService: UsersService,
+    private lendService: LendService
+  ) {}
 
   ngOnInit() {
     this.users = this.usersService.getUsers();
+
     this.subscription = this.usersService.usersChanged.subscribe(
       (users: User[]) => {
         this.users = users;
       }
     );
+
+    this.bookSub = this.lendService.pickedBook.subscribe((pickedBook: Book) => {
+      this.pickedBook = pickedBook;
+    });
   }
 
   onDelete(index: number) {
@@ -30,5 +41,10 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  onLend(pickedUser: User) {
+    this.lendService.lendBook(pickedUser, this.pickedBook.title);
+    this.pickedBook = null;
   }
 }

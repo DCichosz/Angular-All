@@ -19,6 +19,10 @@ export class UsersService {
     this.usersChanged.next(this.users.slice());
   }
 
+  getUser(index: number) {
+    return this.users.slice()[index];
+  }
+
   getUsers(): User[] {
     return this.users.slice();
   }
