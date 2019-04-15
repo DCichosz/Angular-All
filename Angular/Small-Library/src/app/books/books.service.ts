@@ -21,7 +21,7 @@ export class BooksService {
   }
 
   getBooks(): Book[] {
-    return this.books.slice();
+    return [...this.books];
   }
 
   editBook(index: number, newBook: Book) {

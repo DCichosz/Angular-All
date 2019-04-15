@@ -36,7 +36,7 @@ export class LendService {
   }
 
   getLenders(): Lend[] {
-    return this.lenders.slice();
+    return [...this.lenders];
   }
 
   lendBook(user: User, title: string) {

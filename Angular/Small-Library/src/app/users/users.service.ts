@@ -24,7 +24,7 @@ export class UsersService {
   }
 
   getUsers(): User[] {
-    return this.users.slice();
+    return [...this.users];
   }
 
   deleteUser(index: number) {
