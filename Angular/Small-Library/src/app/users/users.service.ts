@@ -20,7 +20,7 @@ export class UsersService {
   }
 
   getUser(index: number) {
-    return this.users.slice()[index];
+    return [...this.users][index];
   }
 
   getUsers(): User[] {
