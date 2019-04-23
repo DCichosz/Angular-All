@@ -1,17 +1,17 @@
 <section class="new-training" fxLayout fxLayoutAlign="center">
-  <mat-card fxFlex.xs="100%" fxFlex="400px">
-    <mat-card-title fxLayoutAlign="center">Time to start a workout!</mat-card-title>
-    <mat-card-content fxLayoutAlign="center">
-      <mat-form-field>
-        <mat-select placeholder="Favorite food">
-          <mat-option [value]="exercise.id" *ngFor="let exercise of exercises">
-            {{exercise.name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions fxLayoutAlign="center">
-      <button mat-button type="submit" (click)="onStartTraining()">Start</button>
-    </mat-card-actions>
-  </mat-card>
+	<mat-card fxFlex.xs="100%" fxFlex="400px">
+		<mat-card-title fxLayoutAlign="center">Time to start a workout!</mat-card-title>
+		<mat-card-content fxLayoutAlign="center">
+			<mat-form-field>
+				<mat-select placeholder="Favorite food">
+					<mat-option [value]="exercise.id" *ngFor="let exercise of exercises">
+						{{exercise.name}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</mat-card-content>
+		<mat-card-actions fxLayoutAlign="center">
+			<button mat-button type="submit" (click)="onStartTraining()">Start</button>
+		</mat-card-actions>
+	</mat-card>
 </section>
