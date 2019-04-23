@@ -19,30 +19,31 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignupComponent,
-    LoginComponent,
-    TrainingComponent,
-    CurrentTrainingComponent,
-    NewTrainingComponent,
-    PastTrainingsComponent,
-    WelcomeComponent,
-    HeaderComponent,
-    SidenavListComponent,
-    StopTrainingComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    AppRoutingModule,
-    FlexLayoutModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [StopTrainingComponent]
+	declarations: [
+		AppComponent,
+		SignupComponent,
+		LoginComponent,
+		TrainingComponent,
+		CurrentTrainingComponent,
+		NewTrainingComponent,
+		PastTrainingsComponent,
+		WelcomeComponent,
+		HeaderComponent,
+		SidenavListComponent,
+		StopTrainingComponent
+	],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		MaterialModule,
+		AppRoutingModule,
+		FlexLayoutModule,
+		FormsModule,
+		ReactiveFormsModule
+	],
+	providers: [],
+	bootstrap: [AppComponent],
+	entryComponents: [StopTrainingComponent]
 })
-export class AppModule {}
+export class AppModule {
+}
