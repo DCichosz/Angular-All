@@ -25,4 +25,7 @@ export class TrainingService {
 		this.exerciseChangedSource.next({...this.runningExercise});
 	}
 
+	getRunningExercise() {
+		return {...this.runningExercise};
+	}
 }
