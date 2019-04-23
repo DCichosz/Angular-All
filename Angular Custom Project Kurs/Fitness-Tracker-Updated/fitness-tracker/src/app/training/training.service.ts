@@ -1,6 +1,6 @@
 import { Exercise } from './exercise.model';
-import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class TrainingService {
@@ -12,6 +12,7 @@ export class TrainingService {
 	];
 
 	private runningExercise: Exercise;
+	private exercises: Exercise[] = [];
 
 	exerciseChangedSource: Subject<Exercise> = new Subject<Exercise>();
 	$exerciseChanged = this.exerciseChangedSource.asObservable();
@@ -23,6 +24,26 @@ export class TrainingService {
 	startExercise(selectedId: string) {
 		this.runningExercise = this.availableExercises.find(ex => ex.id === selectedId);
 		this.exerciseChangedSource.next({...this.runningExercise});
+	}
+
+
+	completeExercise() {
+		this.exercises.push({...this.runningExercise, date: new Date(), state: 'completed'});
+		this.runningExercise = null;
+		this.exerciseChangedSource.next(null);
+	}
+
+
+	cancelExercise(progress: number) {
+		this.exercises.push({
+			...this.runningExercise,
+			duration: this.runningExercise.duration * (progress / 100),
+			calories: this.runningExercise.duration * (progress / 100),
+			date: new Date(),
+			state: 'canceled'
+		});
+		this.runningExercise = null;
+		this.exerciseChangedSource.next(null);
 	}
 
 	getRunningExercise() {
