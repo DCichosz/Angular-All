@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 import { AuthData } from './auth-data.model';
 import { TrainingService } from '../training/training.service';
+import { first } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -17,6 +18,20 @@ export class AuthService {
 	constructor(private router: Router, private afAuth: AngularFireAuth, private trainingService: TrainingService) {
 	}
 
+	initAuthListener() {
+		this.afAuth.authState.subscribe(user => {
+			if (user) {
+				this.isAuthenticated = true;
+				this.authChangeSource.next(true);
+				this.router.navigate(['/training']);
+			} else {
+				this.trainingService.cancelSubscriptions();
+				this.authChangeSource.next(false);
+				this.router.navigate(['/login']);
+				this.isAuthenticated = false;
+			}
+		});
+	}
 
 	registerUser(authData: AuthData) {
 		this.afAuth.auth.createUserWithEmailAndPassword(
@@ -30,32 +45,15 @@ export class AuthService {
 		this.afAuth.auth.signInWithEmailAndPassword(authData.email, authData.password)
 			.then((result) => {
 				console.log(result);
-				this.authSuccessfully();
 			})
 			.catch(result => console.log(result));
 	}
 
 	logout() {
-		this.trainingService.cancelSubscriptions();
 		this.afAuth.auth.signOut();
-		this.authChangeSource.next(false);
-		this.router.navigate(['/login']);
-		this.isAuthenticated = false;
-
-	}
-
-	getUser() {
-		// spread operator , zeby zwrocic nowy obiekt a nie referencje
-		return {...this.user};
 	}
 
 	isAuth() {
 		return this.isAuthenticated;
-	}
-
-	private authSuccessfully() {
-		this.isAuthenticated = true;
-		this.authChangeSource.next(true);
-		this.router.navigate(['/training']);
 	}
 }
