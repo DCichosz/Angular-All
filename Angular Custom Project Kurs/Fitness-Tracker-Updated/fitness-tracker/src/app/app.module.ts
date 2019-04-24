@@ -20,6 +20,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { StopTrainingComponent } from './training/current-training/stop-training.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { AppRoutingModule } from './app-routing.module';
 		FormsModule,
 		ReactiveFormsModule,
 		AngularFireModule.initializeApp(environment.firebase),
-		AngularFirestoreModule
+		AngularFirestoreModule,
+		AngularFireAuthModule
 	],
 	providers: [],
 	bootstrap: [AppComponent],
