@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="274f27a4-a107-4ff5-ba64-626d5ea7b81a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/fitness-tracker/src/app/training/training-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fitness-tracker/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fitness-tracker/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fitness-tracker/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fitness-tracker/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fitness-tracker/src/app/training/training.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fitness-tracker/src/app/training/training.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fitness-tracker/src/app/auth/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fitness-tracker/src/app/auth/auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fitness-tracker/src/app/training/training-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/fitness-tracker/src/app/training/training-routing.module.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -43,13 +42,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fitness-tracker/src/app/app-routing.module.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
-              <caret line="8" column="64" lean-forward="true" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
+              <caret line="8" column="101" selection-start-line="8" selection-start-column="101" selection-end-line="8" selection-end-column="101" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fitness-tracker/src/app/auth/auth.guard.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="35" column="1" lean-forward="true" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#108#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fitness-tracker/src/app/training/training-routing.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+            <state relative-caret-position="63">
+              <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -121,10 +132,11 @@
         <option value="$PROJECT_DIR$/fitness-tracker/src/app/shared/shared.module.ts" />
         <option value="$PROJECT_DIR$/fitness-tracker/src/app/auth/auth-routing.module.ts" />
         <option value="$PROJECT_DIR$/fitness-tracker/src/app/auth/auth.module.ts" />
-        <option value="$PROJECT_DIR$/fitness-tracker/src/app/training/training-routing.module.ts" />
         <option value="$PROJECT_DIR$/fitness-tracker/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/fitness-tracker/src/app/training/training.module.ts" />
+        <option value="$PROJECT_DIR$/fitness-tracker/src/app/training/training-routing.module.ts" />
         <option value="$PROJECT_DIR$/fitness-tracker/src/app/app-routing.module.ts" />
+        <option value="$PROJECT_DIR$/fitness-tracker/src/app/auth/auth.guard.ts" />
       </list>
     </option>
   </component>
@@ -239,17 +251,18 @@
       <option name="presentableId" value="Default" />
       <updated>1556138892463</updated>
       <workItem from="1556138895668" duration="71000" />
-      <workItem from="1556217257243" duration="4655000" />
+      <workItem from="1556217257243" duration="5431000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5014000" />
+    <option name="totallyTimeSpent" value="5790000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -262,7 +275,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" weight="0.32900432" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32034633" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32034633" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -481,16 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fitness-tracker/src/app/training/training-routing.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fitness-tracker/src/app/training/training.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -528,12 +531,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fitness-tracker/src/app/training/training-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fitness-tracker/src/app/app-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="8" column="64" lean-forward="true" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
+          <caret line="8" column="101" selection-start-line="8" selection-start-column="101" selection-end-line="8" selection-end-column="101" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fitness-tracker/tslint.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2442" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fitness-tracker/src/app/auth/auth.guard.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="35" column="1" lean-forward="true" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#108#0" expanded="true" />
           </folding>
         </state>
       </provider>
