@@ -11,7 +11,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
-import { TrainingModule } from './training/training.module';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -28,8 +28,8 @@ import { TrainingModule } from './training/training.module';
 		AppRoutingModule,
 		FlexLayoutModule,
 		AngularFireAuthModule,
-		AuthModule,
-		TrainingModule
+		AngularFirestoreModule,
+		AuthModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]
