@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../../environments/environment';
 
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
 	declarations: [
@@ -17,7 +19,8 @@ import { LoginComponent } from './login/login.component';
 		FormsModule,
 		ReactiveFormsModule,
 		MaterialModule,
-		FlexLayoutModule
+		FlexLayoutModule,
+		AngularFireModule.initializeApp(environment.firebase),
 	],
 	exports: []
 })

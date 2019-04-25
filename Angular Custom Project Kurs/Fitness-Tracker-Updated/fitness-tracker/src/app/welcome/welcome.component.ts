@@ -9,7 +9,7 @@ export class WelcomeComponent implements OnInit {
 
   constructor() {
   }
-cos: string
+
   ngOnInit() {
   }
 

@@ -1,7 +1,7 @@
-import {Component, OnInit, Output, EventEmitter, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
-import {AuthService} from '../../auth/auth.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
 	selector: 'app-sidenav-list',
@@ -35,6 +35,8 @@ export class SidenavListComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
-		this.authSubscription.unsubscribe();
+		if (this.authSubscription) {
+			this.authSubscription.unsubscribe();
+		}
 	}
 }
