@@ -41,10 +41,16 @@ export class TrainingService {
 					};
 				});
 			})).subscribe((exercises: Exercise[]) => {
-				this.uiService.loadingStateChangedSource.next(false);
-				this.availableExercises = exercises;
-				this.exercisesChangedSource.next([...exercises]);
-			}));
+					this.uiService.loadingStateChangedSource.next(false);
+					this.availableExercises = exercises;
+					this.exercisesChangedSource.next([...exercises]);
+				},
+				error => {
+					this.uiService.loadingStateChangedSource.next(false);
+					this.uiService.showSnackbar('Fetching exercises failed, please try again later', null, 3000);
+					this.exercisesChangedSource.next(null);
+				}
+			));
 	}
 
 	startExercise(selectedId: string) {
