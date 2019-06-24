@@ -2,6 +2,9 @@ import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import { User } from './user.model';
+import { HttpClient } from '@angular/common/http';
+import { Lend } from '../lend/lend.model';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
@@ -15,16 +18,24 @@ export class UsersService {
     new User('An5re', 10)
   ];
 
+  constructor(private httpClient: HttpClient) {}
+
+
   emitUserChange() {
     this.usersChanged.next(this.users.slice());
   }
 
-  getUser(index: number) {
-    return [...this.users][index];
+  fetchUsers(): Promise<User[]> {
+    return this.httpClient.get<User[]>('http://localhost:62712/api/readers').pipe(map(dataJson => {
+      const jsonUsers: User[] = [];
+      dataJson.forEach(x => jsonUsers.push(new User(x.Name, x.Age)));
+      return jsonUsers;
+    })).toPromise();
   }
 
-  getUsers(): User[] {
-    return [...this.users];
+  setUsers(users: User[]) {
+    this.users = [...users];
+    this.emitUserChange();
   }
 
   deleteUser(index: number) {

@@ -24,10 +24,12 @@ export class BooksComponent implements OnInit, OnDestroy {
   constructor(private booksService: BooksService, private lendService: LendService) {}
 
   ngOnInit() {
-    this.books = this.booksService.getBooks();
+    // fetch from DB and set books in service
+    this.booksService.fetchBooks().then(data => this.booksService.setBooks(data));
     this.subscription = this.booksService.booksChanged.subscribe(
       (books: Book[]) => {
         this.books = books;
+        console.log(this.books);
       }
     );
 

@@ -18,7 +18,7 @@ export class LendComponent implements OnInit {
   constructor(private lenderService: LendService) {}
 
   ngOnInit() {
-    this.lended = this.lenderService.getLenders();
+    this.lenderService.fetchLenders().then(data => this.lenderService.setLenders(data));
     this.subscription = this.lenderService.lendersChanged.subscribe(
       (lended: Lend[]) => {
         this.lended = lended;
