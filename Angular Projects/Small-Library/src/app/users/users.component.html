@@ -1,16 +1,33 @@
   <h1>Czytelnicy</h1>
   <div class="button-group"></div>
-  <form>
-    <div class="form-group">
-      <label for="">Imię i Nazwisko</label>
-      <input class="form-control" id="fullname" type="text" #fullname/>
+  <form (ngSubmit)="onSubmit()" [formGroup]="usersForm">
+    <div class="form-group" formGroupName="user">
+      <label>Imię i Nazwisko</label>
+      <input class="form-control" id="fullname" type="text" formControlName="fullname"/>
+      <p
+        class="text-muted"
+        *ngIf="
+        usersForm.get('user.fullname').invalid &&
+        usersForm.get('user.fullname').touched
+      "
+      >
+        Imie i nazwisko nie może być puste!
+      </p>
+
+      <label class="pt-1">Wiek</label>
+      <input class="form-control" id="age" type="number" formControlName="age"/>
+      <p
+      class="text-muted"
+      *ngIf="
+        usersForm.get('user.age').invalid &&
+        usersForm.get('user.age').touched
+      "
+    >
+      Wiek nie może być pusty!
+    </p>
     </div>
-    <div class="form-group">
-      <label for="">Wiek</label>
-      <input class="form-control" id="age" type="text" #age/>
-    </div>
-    <button class="btn btn-success btn-sm" (click)="onAdd()">
-      <i class="fa fa-plus mr-2"></i>Dodaj ( nie działczy )
+    <button class="btn btn-success btn-sm" type="submit" [disabled]="usersForm.invalid">
+      <i class="fa fa-plus mr-2"></i>Dodaj
     </button>
   </form>
   <br>

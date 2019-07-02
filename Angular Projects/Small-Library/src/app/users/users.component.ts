@@ -5,6 +5,7 @@ import { LendService } from './../lend/lend.service';
 import { Book } from './../books/book.model';
 import { UsersService } from './users.service';
 import { User } from './user.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-users',
@@ -17,8 +18,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   bookSub: Subscription;
   pickedBook: Book;
 
-  @ViewChild("fullname", {static: false}) fullname: ElementRef;
-  @ViewChild("age", {static: false}) age: ElementRef;
+  usersForm: FormGroup;
 
   constructor(
     private usersService: UsersService,
@@ -36,7 +36,24 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.bookSub = this.lendService.pickedBook.subscribe((pickedBook: Book) => {
       this.pickedBook = pickedBook;
     });
+
+    this.usersForm = new FormGroup({
+      user: new FormGroup({
+        fullname: new FormControl(null, Validators.required),
+        age: new FormControl(null, [Validators.required])
+      })
+    });
   }
+
+  onSubmit() {
+      this.usersService.addUser(
+        new User(
+          this.usersForm.get('user.fullname').value,
+          this.usersForm.get('user.age').value
+        )
+      );
+      this.usersForm.reset();
+    }
 
   onDelete(index: number) {
     this.usersService.deleteUser(index);
@@ -53,13 +70,5 @@ export class UsersComponent implements OnInit, OnDestroy {
         )
       : this.lendService.lendBook(pickedUser, this.pickedBook.title);
     this.pickedBook = null;
-  }
-
-  onAdd() {
-    if(this.age.nativeElement.value && this.fullname.nativeElement.value) {
-      this.usersService.addUser(new User(this.fullname.nativeElement.value, this.age.nativeElement.value));
-    } else {
-      console.log("pustty model kurłą");
-    }
   }
 }
