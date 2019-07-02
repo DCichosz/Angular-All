@@ -55,8 +55,8 @@ export class BooksComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDelete(index: number) {
-    this.booksService.deleteBook(index);
+  onDelete(id: number) {
+    this.booksService.deleteBook(id);
   }
 
   onSubmit() {

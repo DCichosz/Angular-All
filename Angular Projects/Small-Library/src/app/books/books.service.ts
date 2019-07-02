@@ -57,9 +57,13 @@ export class BooksService {
       .catch((error) => console.log(error));
   }
 
-  deleteBook(index: number) {
-    this.books.splice(index, 1);
-    this.emitBooksChange();
+  deleteBook(id: number) {
+    this.httpClient.delete('http://localhost:62712/api/books/' + id)
+      .toPromise()
+      .then(() => {
+      this.books = this.books.filter(book => book.id !== id);
+      this.emitBooksChange();
+    }).catch(error => console.log(error));
   }
 
   findBook(index: number) {
