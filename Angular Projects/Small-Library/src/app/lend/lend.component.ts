@@ -1,10 +1,8 @@
-import { Book } from './../books/book.model';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { LendService } from './lend.service';
 import { Lend } from './lend.model';
-import { User } from '../users/user.model';
 
 @Component({
   selector: 'app-lend',
@@ -18,7 +16,8 @@ export class LendComponent implements OnInit {
   constructor(private lenderService: LendService) {}
 
   ngOnInit() {
-    this.lenderService.fetchLenders().then(data => this.lenderService.setLenders(data)).catch(() => console.log("PSAJAJAJA lend"));
+    this.lenderService.fetchLenders().then(data => this.lenderService.setLenders(data))
+      .catch(() => this.lenderService.snackBar.open('Lenders :<', 'OK'));
     this.subscription = this.lenderService.lendersChanged.subscribe(
       (lended: Lend[]) => {
         this.lended = lended;

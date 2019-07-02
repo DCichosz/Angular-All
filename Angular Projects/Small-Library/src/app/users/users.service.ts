@@ -2,8 +2,9 @@ import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 import { User } from './user.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
@@ -11,7 +12,7 @@ export class UsersService {
 
   users: User[] = [];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private snackBar: MatSnackBar) {}
 
 
   emitUserChange() {
@@ -33,6 +34,7 @@ export class UsersService {
       .toPromise()
       .then((data) => {
         console.log(data);
+        this.snackBar.open('dupcia');
         this.users.push(newUser);
         this.emitUserChange();
       })

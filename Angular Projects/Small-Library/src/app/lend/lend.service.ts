@@ -7,6 +7,7 @@ import { User } from '..//users/user.model';
 import { Book } from '../books/book.model';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material';
 
 // @ts-ignore
 @Injectable({ providedIn: 'root' })
@@ -20,7 +21,7 @@ export class LendService {
 
   lenders: Lend[];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, public snackBar: MatSnackBar) {}
 
   emitLendersChange() {
     this.lendersChanged.next(this.lenders.slice());
