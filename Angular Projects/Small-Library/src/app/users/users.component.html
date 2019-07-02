@@ -3,14 +3,14 @@
   <form>
     <div class="form-group">
       <label for="">Imię i Nazwisko</label>
-      <input class="form-control" id="fullname" type="text" />
+      <input class="form-control" id="fullname" type="text" #fullname/>
     </div>
     <div class="form-group">
       <label for="">Wiek</label>
-      <input class="form-control" id="age" type="text" />
+      <input class="form-control" id="age" type="text" #age/>
     </div>
-    <button class="btn btn-success btn-sm">
-      <i class="fa fa-plus mr-2"></i>Dodaj
+    <button class="btn btn-success btn-sm" (click)="onAdd()">
+      <i class="fa fa-plus mr-2"></i>Dodaj ( nie działczy )
     </button>
   </form>
   <br>

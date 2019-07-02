@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { LendService } from './../lend/lend.service';
@@ -16,13 +16,17 @@ export class UsersComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   bookSub: Subscription;
   pickedBook: Book;
+
+  @ViewChild("fullname", {static: false}) fullname: ElementRef;
+  @ViewChild("age", {static: false}) age: ElementRef;
+
   constructor(
     private usersService: UsersService,
     private lendService: LendService
   ) {}
 
   ngOnInit() {
-    this.usersService.fetchUsers().then(data => this.usersService.setUsers(data));
+    this.usersService.fetchUsers().then(data => this.usersService.setUsers(data)).catch(() => console.log("PSAJAJAJA users"));
     this.subscription = this.usersService.usersChanged.subscribe(
       (users: User[]) => {
         this.users = users;
@@ -49,5 +53,13 @@ export class UsersComponent implements OnInit, OnDestroy {
         )
       : this.lendService.lendBook(pickedUser, this.pickedBook.title);
     this.pickedBook = null;
+  }
+
+  onAdd() {
+    if(this.age.nativeElement.value && this.fullname.nativeElement.value) {
+      this.usersService.addUser(new User(this.fullname.nativeElement.value, this.age.nativeElement.value));
+    } else {
+      console.log("pustty model kurłą");
+    }
   }
 }

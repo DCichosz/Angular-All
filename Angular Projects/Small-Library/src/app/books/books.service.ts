@@ -23,6 +23,7 @@ export class BooksService {
   fetchBooks(): Promise<Book[]> {
     return this.httpClient.get<Book[]>('http://localhost:62712/api/books').pipe(map(dataJson => {
       const jsonBooks: Book[] = [];
+      // @ts-ignore
       dataJson.forEach(x => jsonBooks.push(new Book(x.Title, x.Author)));
       return jsonBooks;
     })).toPromise();

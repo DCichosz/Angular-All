@@ -25,7 +25,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // fetch from DB and set books in service
-    this.booksService.fetchBooks().then(data => this.booksService.setBooks(data));
+    this.booksService.fetchBooks().then(data => this.booksService.setBooks(data)).catch(() => console.log("PSAJAJAJA books"));
     this.subscription = this.booksService.booksChanged.subscribe(
       (books: Book[]) => {
         this.books = books;

@@ -38,6 +38,8 @@ export class LendService {
   fetchLenders(): Promise<Lend[]> {
     return this.httpClient.get<Lend[]>('http://localhost:62712/api/lend').pipe(map(dataJson => {
       const jsonLenders: Lend[] = [];
+
+      // @ts-ignore
       dataJson.forEach(x => jsonLenders.push(new Lend(x.Title, new User(x.Name, x.Age), x.LendDate)));
       return jsonLenders;
     })).toPromise();
