@@ -30,6 +30,7 @@ export class BooksService {
   }
 
   setBooks(books: Book[]) {
+    // tslint:disable-next-line:no-shadowed-variable
     this.books = [...books];
     this.emitBooksChange();
   }
@@ -40,8 +41,14 @@ export class BooksService {
   }
 
   addBook(newBook: Book) {
-    this.books.push(newBook);
-    this.emitBooksChange();
+    this.httpClient.post('http://localhost:62712/api/books', newBook)
+      .toPromise()
+      .then((data) => {
+      console.log(data);
+      this.books.push(newBook);
+      this.emitBooksChange();
+    })
+      .catch((error) => console.log(error));
   }
 
   deleteBook(index: number) {
