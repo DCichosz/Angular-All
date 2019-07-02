@@ -9,13 +9,7 @@ import { map } from 'rxjs/operators';
 export class UsersService {
   usersChanged = new Subject<User[]>();
 
-  users: User[] = [
-    new User('1', 10),
-    new User('A2ndre', 10),
-    new User('An3dre', 10),
-    new User('An4re', 10),
-    new User('An5re', 10)
-  ];
+  users: User[] = [];
 
   constructor(private httpClient: HttpClient) {}
 

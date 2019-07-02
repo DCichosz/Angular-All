@@ -66,7 +66,7 @@ export class BooksService {
     }).catch(error => console.log(error));
   }
 
-  findBook(index: number) {
+  findBookByIndex(index: number) {
     return this.books[index];
   }
 }
