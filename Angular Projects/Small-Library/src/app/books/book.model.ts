@@ -1,3 +1,3 @@
 export class Book {
-  constructor(public title: string, public author: string) {}
+  constructor(public id: number, public title: string, public author: string) {}
 }

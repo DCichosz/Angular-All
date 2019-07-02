@@ -62,6 +62,7 @@ export class BooksComponent implements OnInit, OnDestroy {
   onSubmit() {
     if (this.editedBook) {
       this.editedBook.book = new Book(
+        this.booksService.findBook(this.editedBook.index).id,
         this.booksForm.get('book.title').value,
         this.booksForm.get('book.author').value
       );
@@ -69,6 +70,7 @@ export class BooksComponent implements OnInit, OnDestroy {
     } else {
       this.booksService.addBook(
         new Book(
+          0,
           this.booksForm.get('book.title').value,
           this.booksForm.get('book.author').value
         )

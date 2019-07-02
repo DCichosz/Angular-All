@@ -1,7 +1,7 @@
 import { Book } from './book.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
@@ -21,12 +21,14 @@ export class BooksService {
   }
 
   fetchBooks(): Promise<Book[]> {
-    return this.httpClient.get<Book[]>('http://localhost:62712/api/books').pipe(map(dataJson => {
+    return this.httpClient.get<Book[]>('http://localhost:62712/api/books')
+      .pipe(map(dataJson => {
       const jsonBooks: Book[] = [];
       // @ts-ignore
-      dataJson.forEach(x => jsonBooks.push(new Book(x.Title, x.Author)));
+      dataJson.forEach(x => jsonBooks.push(new Book(x.ID, x.Title, x.Author)));
       return jsonBooks;
-    })).toPromise();
+      }))
+    .toPromise();
   }
 
   setBooks(books: Book[]) {
@@ -36,15 +38,19 @@ export class BooksService {
   }
 
   editBook(index: number, newBook: Book) {
-    this.books[index] = newBook;
-    this.emitBooksChange();
+    this.httpClient.put('http://localhost:62712/api/books/' + newBook.id, newBook).toPromise()
+      .then(() => {
+      this.books[index] = newBook;
+      this.emitBooksChange();
+    }).catch((error) => console.log(error));
   }
 
   addBook(newBook: Book) {
     this.httpClient.post('http://localhost:62712/api/books', newBook)
       .toPromise()
-      .then((data) => {
+      .then((data: number) => {
       console.log(data);
+      newBook.id = data
       this.books.push(newBook);
       this.emitBooksChange();
     })
@@ -54,5 +60,9 @@ export class BooksService {
   deleteBook(index: number) {
     this.books.splice(index, 1);
     this.emitBooksChange();
+  }
+
+  findBook(index: number) {
+    return this.books[index];
   }
 }
