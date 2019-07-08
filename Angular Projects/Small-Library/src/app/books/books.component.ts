@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { BooksService } from './books.service';
 import { Book } from './book.model';
+import { SnackbarService } from '../shared/snackbar.service';
 
 @Component({
   selector: 'app-books',
@@ -21,11 +22,12 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   booksForm: FormGroup;
 
-  constructor(private booksService: BooksService, private lendService: LendService) {}
+  constructor(private booksService: BooksService, private lendService: LendService, private snackbarService: SnackbarService) {}
 
   ngOnInit() {
     // fetch from DB and set books in service
-    this.booksService.fetchBooks().then(data => this.booksService.setBooks(data)).catch(() => console.log('PSAJAJAJA books'));
+    this.booksService.fetchBooks().then(data => this.booksService.setBooks(data)).catch(() =>
+      this.snackbarService.showErrorFromApi());
     this.subscription = this.booksService.booksChanged.subscribe(
       (books: Book[]) => {
         this.books = books;
@@ -83,7 +85,9 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   onPick(pickedBook: Book) {
     console.log(pickedBook);
-    this.lendService.checkTitle(pickedBook.title) ? alert('Książka została już wypożyczona') : this.lendService.pickBook(pickedBook);
+    this.lendService.checkTitle(pickedBook.title) ?
+      this.snackbarService.snackbar.open('Książka została już wypożyczona') :
+      this.lendService.pickBook(pickedBook);
   }
 
   ngOnDestroy() {

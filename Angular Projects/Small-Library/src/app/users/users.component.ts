@@ -6,6 +6,7 @@ import { Book } from './../books/book.model';
 import { UsersService } from './users.service';
 import { User } from './user.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SnackbarService } from '../shared/snackbar.service';
 
 @Component({
   selector: 'app-users',
@@ -22,11 +23,13 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   constructor(
     private usersService: UsersService,
-    private lendService: LendService
+    private lendService: LendService,
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit() {
-    this.usersService.fetchUsers().then(data => this.usersService.setUsers(data)).catch(() => console.log("PSAJAJAJA users"));
+    this.usersService.fetchUsers().then(data => this.usersService.setUsers(data))
+      .catch(() => this.snackbarService.showErrorFromApi());
     this.subscription = this.usersService.usersChanged.subscribe(
       (users: User[]) => {
         this.users = users;
@@ -65,9 +68,7 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   onLend(pickedUser: User) {
     this.lendService.checkUser(pickedUser)
-      ?  alert(
-          'Użytkownik nie oddał wypożyczonej książki, nie można wypożyczyć następnej'
-        )
+      ?  this.snackbarService.snackbar.open('Użytkownik nie oddał wypożyczonej książki, nie można wypożyczyć następnej')
       : this.lendService.lendBook(pickedUser, this.pickedBook.title);
     this.pickedBook = null;
   }

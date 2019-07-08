@@ -1,14 +1,12 @@
 import { Book } from './book.model';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class BooksService {
   booksChanged = new Subject<Book[]>();
-
-  pickedBook = new Subject<Book>();
 
   private books: Book[] = [];
 
